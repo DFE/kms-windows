@@ -310,9 +310,29 @@ License: GPL 2, LGPL 2
     mingw32-make
     sudo mingw32-make install
 
+### x264
+
+License: GPL 2
+Required by: gst-plugins-ugly
+
+    git clone http://git.videolan.org/git/x264.git
+    cd x264
+	mingw32-configure --disable-asm --enable-static --enable-shared
+	mingw32-make
+	sudo mingw32-make install
+
 ### gst-plugins-ugly
 
-We can skip this at this point...
+License: GPL 2.1
+
+    git clone https://github.com/Kurento/gst-plugins-ugly.git
+    cd gst-plugins-ugly/
+    ./autogen.sh ## Ignore configuration errors
+    mingw32-configure \
+      --libexec=/usr/i686-w64-mingw32/sys-root/mingw/libexec \
+      --disable-debug --disable-gtk-doc --disable-examples
+    mingw32-make
+    sudo mingw32-make install
 
 ### gst-libav
 
@@ -424,6 +444,7 @@ And this...
     cp $PREF/bin/libwinpthread-1.dll bin/
     cp $PREF/bin/libxml2-2.dll bin/
     cp $PREF/bin/zlib1.dll bin/
+    cp $PREF/bin/libx264-150.dll bin/
     cp $PREF/lib/gstreamer-1.5/libfacedetector.dll lib/gstreamer-1.5/
     cp $PREF/lib/gstreamer-1.5/libfaceoverlay.dll lib/gstreamer-1.5/
     cp $PREF/lib/gstreamer-1.5/libgstaccurip.dll lib/gstreamer-1.5/
@@ -594,6 +615,12 @@ And this...
     cp $PREF/lib/gstreamer-1.5/librtpendpoint.dll lib/gstreamer-1.5/
     cp $PREF/lib/gstreamer-1.5/libvp8parse.dll lib/gstreamer-1.5/
     cp $PREF/lib/gstreamer-1.5/libwebrtcendpoint.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstasf.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstdvdlpcmdec.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstdvdsub.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstxingmux.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstrmdemux.dll lib/gstreamer-1.5/
+    cp $PREF/lib/gstreamer-1.5/libgstx264.dll lib/gstreamer-1.5/
     cp $PREF/lib/kurento/modules/libkmscoremodule.dll lib/kurento/modules/
     cp $PREF/lib/kurento/modules/libkmselementsmodule.dll lib/kurento/modules/
     cp $PREF/lib/kurento/modules/libkmsfiltersmodule.dll lib/kurento/modules/
